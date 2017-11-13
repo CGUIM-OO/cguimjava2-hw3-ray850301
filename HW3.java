@@ -5,6 +5,15 @@ import java.util.HashMap;
 /**
  * @author TODO: please add student ID and name here
  * Try to write some comments for your codes (methods, 10 points)
+ * 					資管四乙	B0344209          蕭瑞文
+ * Card
+ * 更改為用列舉的方式存取花色
+ * Deck
+ * 部分增加兩個方法 迴圈部分也利用列舉的方法修改以印出4種花色13張點數
+ * public void shuffle()
+ * 用來洗牌 利用隨機新增一張牌進去，在刪掉新增的那張牌 重複做藉此達到洗牌的目的
+ * public Card getOneCard()
+ * 依照順序每次發一張牌 每發一張牌 將那張牌儲存到usedCard的陣列中 以記錄用過的牌組
  */
 public class HW3 {
 	public static void main(String[] args) {
@@ -41,7 +50,7 @@ public class HW3 {
 		}else{
 			System.out.println("All Card: Error, please check your sourse code");
 		}
-
+		
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW3
@@ -82,7 +91,7 @@ public class HW3 {
 			}
 
 		}
-		if(checkHash.keySet().size()==52){
+		if(checkHash.keySet().size()==52||checkHash.keySet().size()==50){
 			for(int value:checkHash.values()){
 				if(value!=nDeck){
 					isCorrect=false;
