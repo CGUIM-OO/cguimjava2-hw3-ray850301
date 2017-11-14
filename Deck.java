@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+﻿import java.util.ArrayList;
 import java.util.Random;
 
 public class Deck {
@@ -41,10 +41,13 @@ public class Deck {
 	//	洗牌
 	public void shuffle() {
 		Random rnd = new Random();
-		for(int i = 0; i<52; i++){				// 重複52次
-			int j = rnd.nextInt(i + 1);			// j = 1~52
-			cards.add(cards.get(j));			// 從原牌組中隨機拉一張到原牌組的最後面
-			cards.remove(j);					// 再把原牌堆中拉出來新增的牌刪掉， 以維持牌組的正確張數
+		for(int i = 0; i<cards.size(); i++){		// 重複52次           cards.size()=52
+			int j = rnd.nextInt(cards.size())+1;	// j = 1~52
+			
+			//System.out.println("TEST: "+j);
+			Card temp = cards.get(i);			// 把第一張暫存起來
+			cards.set(i, cards.get(j-1));		// 再把原牌堆中拉出來新增的牌刪掉，換上隨機位置的一張牌
+			cards.set((j-1), temp);				// 再把暫存的那張牌去替換掉，原本隨機位置抽出的那張牌
 		}
 		nUsed=0;								// 發牌數歸零
 		usedCard= new ArrayList<Card>();		// 洗完牌，把用過的牌清除
